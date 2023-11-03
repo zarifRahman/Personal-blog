@@ -5,17 +5,17 @@ import Image from "next/image";
 const Featured = () => {
   return (
     <div className={styles.container}>
-			{/* Big title --- first */}
+      {/* Big title --- first */}
       <h1 className={styles.title}>
-        <b>Welcome, to Zarif's blog!</b>
+        <b>Welcome, to Zarif&apos; blog!</b>
       </h1>
-			{/* second part */}
+      {/* second part */}
       <div className={styles.post}>
-				{/* image */}
+        {/* image */}
         <div className={styles.imgContainer}>
           <Image src='/p1.jpeg' alt='' fill className={styles.image} />
         </div>
-				{/* title- text - button */}
+        {/* title- text - button */}
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>
             Lorem ipsum dolor sit amet alim consectetur adipisicing elit.
