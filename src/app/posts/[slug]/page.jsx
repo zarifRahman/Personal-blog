@@ -1,50 +1,41 @@
+import { notFound } from "next/navigation";
 import styles from "./singlePage.module.css";
 import Image from "next/image";
-import Comments from "@/components/comments/Comments";
 import Menu from "@/components/Menu/Menu";
+import { posts, getPost } from "@/content/posts";
 
-const getData = async (slug) => {
-  const res = await fetch(`http://127.0.0.1:8000/api/posts/${slug}`, {
-    cache: "no-store",
-  });
+export function generateStaticParams() {
+  return posts.map((p) => ({ slug: p.slug }));
+}
 
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
+export function generateMetadata({ params }) {
+  const data = getPost(params.slug);
+  if (!data) return {};
+  return { title: `${data.title} | Zarif`, description: data.title };
+}
 
-  return res.json();
-};
-
-const SinglePage = async ({ params }) => {
+const SinglePage = ({ params }) => {
   const { slug } = params;
-
-  const data = await getData(slug);
+  const data = getPost(slug);
+  if (!data) notFound();
 
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>{data?.title}</h1>
+          <h1 className={styles.title}>{data.title}</h1>
           <div className={styles.user}>
-            {data?.user?.image && (
-              <div className={styles.userImageContainer}>
-                <Image
-                  src={data?.user?.image}
-                  alt=''
-                  fill
-                  className={styles.avatar}
-                />
-              </div>
-            )}
             <div className={styles.userTextContainer}>
-              <span className={styles.username}>{data?.user.name}</span>
-              <span className={styles.date}>01.01.2024</span>
+              <span className={styles.username}>{data.author}</span>
+              <span className={styles.date}>
+                {data.createdAt.substring(0, 10)} · {data.views} views
+              </span>
             </div>
           </div>
         </div>
-        {data?.img && (
+        {data.img && (
           <div className={styles.imageContainer}>
-            <Image src={data.img} alt='' fill className={styles.image} />
+            <Image src={data.img} alt="" fill className={styles.image} />
           </div>
         )}
       </div>
@@ -52,11 +43,8 @@ const SinglePage = async ({ params }) => {
         <div className={styles.post}>
           <div
             className={styles.description}
-            dangerouslySetInnerHTML={{ __html: data?.desc }}
+            dangerouslySetInnerHTML={{ __html: data.desc }}
           />
-          <div className={styles.comment}>
-            <Comments postSlug={slug} />
-          </div>
         </div>
         <Menu />
       </div>

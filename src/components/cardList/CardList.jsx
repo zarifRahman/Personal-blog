@@ -2,26 +2,19 @@ import React from "react";
 import styles from "./cardList.module.css";
 import Card from "../card/Card";
 import Pagination from "../pagination/Pagination";
+import { posts as allPosts } from "@/content/posts";
 
-const getData = async (page, cat) => {
-  const res = await fetch(
-    `http://127.0.0.1:8000/api/posts?page=${page}&cat=${cat || ""}`,
-    {
-      cache: "no-store",
-    }
-  );
+const POST_PER_PAGE = 4;
 
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  return res.json();
+const getData = (page, cat) => {
+  const filtered = cat ? allPosts.filter((p) => p.catSlug === cat) : allPosts;
+  const count = filtered.length;
+  const start = POST_PER_PAGE * (page - 1);
+  return { posts: filtered.slice(start, start + POST_PER_PAGE), count };
 };
-console.log(getData(),'xxxxxxxx')
-const CardList = async ({ page, cat }) => {
-  const { posts, count } = await getData(page, cat);
 
-  const POST_PER_PAGE = 2;
+const CardList = ({ page, cat }) => {
+  const { posts, count } = getData(page, cat);
 
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
@@ -30,9 +23,11 @@ const CardList = async ({ page, cat }) => {
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.posts}>
-        {posts?.map((item) => (
-          <Card item={item} key={item._id} />
-        ))}
+        {posts?.length ? (
+          posts.map((item) => <Card item={item} key={item.slug} />)
+        ) : (
+          <p className={styles.empty}>$ no posts in this category yet.</p>
+        )}
       </div>
       <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
     </div>

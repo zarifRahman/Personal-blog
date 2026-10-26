@@ -12,17 +12,30 @@ const getFromLocalStorage = () => {
 };
 
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    return getFromLocalStorage();
-  });
+  // Keep the first render deterministic on the server and client. Browser-only
+  // storage is read after hydration to avoid a server/client markup mismatch.
+  const [theme, setTheme] = useState("light");
+  const [hydrated, setHydrated] = useState(false);
 
   const toggle = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme((currentTheme) =>
+      currentTheme === "light" ? "dark" : "light"
+    );
   };
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    const storedTheme = getFromLocalStorage();
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (hydrated) {
+      localStorage.setItem("theme", theme);
+    }
+  }, [hydrated, theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>

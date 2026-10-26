@@ -1,7 +1,28 @@
-.container{
-  flex:5
+.container {
+  flex: 5;
 }
 
-.title{
-  margin: 50px 0px;
+.title {
+  margin: 40px 0px 30px;
+  font-size: 22px;
+  color: var(--softTextColor);
+  font-weight: 600;
+}
+
+.title::before {
+  content: "~/ ";
+  color: var(--accent);
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  padding: 28px 30px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--softTextColor);
+  font-size: 14px;
 }

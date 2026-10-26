@@ -62,10 +62,81 @@
   margin-top: 60px;
 }
 
+.description {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--textColor);
+  max-width: 72ch;
+}
+
 .description p {
+  margin-bottom: 22px;
+}
+
+.description h2 {
+  font-family: var(--font-mono, monospace);
+  font-size: 28px;
+  letter-spacing: -0.5px;
+  margin: 44px 0 16px;
+  color: var(--accent);
+}
+
+.description h3 {
+  font-family: var(--font-mono, monospace);
   font-size: 20px;
-  font-weight: 300;
-  margin-bottom: 20px;
+  margin: 32px 0 12px;
+}
+
+.description ul,
+.description ol {
+  margin: 0 0 22px 22px;
+}
+
+.description li {
+  margin-bottom: 8px;
+}
+
+.description a {
+  color: var(--accent2);
+  text-decoration: underline;
+}
+
+.description blockquote {
+  border-left: 3px solid var(--accent2);
+  padding-left: 20px;
+  margin: 28px 0;
+  color: var(--softTextColor);
+}
+
+.description code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9em;
+  background: var(--softBg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.description pre {
+  background: #010409;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  margin: 0 0 24px;
+}
+
+.description pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.description img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 24px 0;
 }
 
 @media screen and (max-width: 1536px) {

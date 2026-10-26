@@ -1,9 +1,13 @@
 .title{
-  background-color: coral;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  text-transform: capitalize;
+  margin: 40px 0 10px;
+  font-size: 40px;
+  letter-spacing: -1px;
+  color: var(--textColor);
+}
+
+.title::before{
+  content: "~/ ";
+  color: var(--accent);
 }
 
 .content{

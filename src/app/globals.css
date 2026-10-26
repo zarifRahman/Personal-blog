@@ -1,8 +1,14 @@
 :root {
-  --bg: white;
-  --textColor: black;
-  --softBg: #f0f0f0;
-  --softTextColor: #626262;
+  --bg: #0d1117;
+  --textColor: #c9d1d9;
+  --softBg: #161b22;
+  --softTextColor: #8b949e;
+  --card: #161b22;
+  --line: #21262d;
+  --accent: #7ee787;        /* terminal green */
+  --accent2: #58a6ff;       /* terminal blue */
+  --accentSoft: #132a1c;
+  --font-serif: Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -14,6 +20,9 @@
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: var(--bg);
+  color: var(--textColor);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
 }
 
 a {
@@ -21,18 +30,33 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background: var(--accentSoft);
+  color: var(--accent);
+}
+
 .dark {
-  --bg: #0f172a;
-  --textColor: #ddd;
-  --softBg: green;
-  --softTextColor: #a6a6a6;
+  --bg: #0d1117;
+  --textColor: #c9d1d9;
+  --softBg: #161b22;
+  --softTextColor: #8b949e;
+  --card: #161b22;
+  --line: #21262d;
+  --accent: #7ee787;
+  --accent2: #58a6ff;
+  --accentSoft: #132a1c;
 }
 
 .light {
-  --bg: white;
-  --textColor: black;
-  --softBg: purple;
-  --softTextColor: #626262;
+  --bg: #f6f8fa;
+  --textColor: #1f2328;
+  --softBg: #eaeef2;
+  --softTextColor: #57606a;
+  --card: #ffffff;
+  --line: #d0d7de;
+  --accent: #1a7f37;
+  --accent2: #0969da;
+  --accentSoft: #dafbe1;
 }
 
 .container {

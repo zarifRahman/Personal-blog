@@ -9,7 +9,9 @@ const ThemeToggle = () => {
   const { toggle, theme } = useContext(ThemeContext);
 
   return (
-    <div
+    <button
+      type='button'
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
       className={styles.container}
       onClick={toggle}
       style={
@@ -28,7 +30,7 @@ const ThemeToggle = () => {
         }
       ></div>
       <Image src='/sun.png' alt='' width={14} height={14} />
-    </div>
+    </button>
   );
 };
 

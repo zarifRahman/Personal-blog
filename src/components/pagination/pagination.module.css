@@ -1,18 +1,27 @@
 .container {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .button {
-  width: 100px;
-  border: none;
-  padding: 16px;
-  background-color: crimson;
-  color: white;
+  width: 110px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px;
+  background-color: var(--softBg);
+  color: var(--textColor);
+  font-size: 14px;
   cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
 }
 
-.button:disabled{
-  background-color: rgba(220, 20, 60, 0.473);
+.button:not(:disabled):hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.button:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }

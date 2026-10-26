@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./comments.module.css";
 import Image from "next/image";
 import useSWR from "swr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
 const fetcher = async (url) => {
@@ -20,6 +20,11 @@ const fetcher = async (url) => {
 
 const Comments = ({ postSlug }) => {
   const { status } = useSession();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const { data, mutate, isLoading } = useSWR(
     `http://127.0.0.1:8000/api/comments?postSlug=${postSlug}`,
@@ -39,7 +44,7 @@ const Comments = ({ postSlug }) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
-      {status === "authenticated" ? (
+      {mounted && status === "authenticated" ? (
         <div className={styles.write}>
           <textarea
             placeholder='write a comment...'

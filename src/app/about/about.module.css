@@ -1,0 +1,140 @@
+.page {
+  max-width: 760px;
+  margin: 72px auto 120px;
+}
+
+.prompt {
+  display: block;
+  color: var(--accent2);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.dollar {
+  color: var(--accent);
+}
+
+.title {
+  font-size: 48px;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.intro {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--textColor);
+  margin-bottom: 36px;
+}
+
+.code {
+  background: #010409;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 24px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--textColor);
+  margin-bottom: 48px;
+  white-space: pre;
+}
+
+.kw {
+  color: var(--accent2);
+}
+
+.str {
+  color: var(--accent);
+}
+
+.heading {
+  font-size: 22px;
+  color: var(--accent);
+  margin: 0 0 18px;
+}
+
+.heading::before {
+  content: "## ";
+  color: var(--softTextColor);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.tag {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--softBg);
+  font-size: 13px;
+}
+
+.tag::before {
+  content: "#";
+  color: var(--accent);
+  margin-right: 2px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.project:hover {
+  border-color: var(--accent2);
+  transform: translateY(-2px);
+}
+
+.projectName {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.projectDesc {
+  grid-column: 1 / 2;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--softTextColor);
+}
+
+.projectArrow {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  align-self: center;
+  color: var(--accent2);
+}
+
+.outro {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--softTextColor);
+}
+
+.link {
+  color: var(--accent2);
+}
+
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 36px;
+  }
+}

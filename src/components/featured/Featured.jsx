@@ -1,33 +1,30 @@
 import React from "react";
 import styles from "./featured.module.css";
-import Image from "next/image";
 
 const Featured = () => {
   return (
     <div className={styles.container}>
-      {/* Big title --- first */}
+      <span className={styles.prompt}>
+        ~/zarif <span className={styles.dollar}>$</span> whoami
+      </span>
       <h1 className={styles.title}>
-        <b>Welcome, to Zarif&apos; blog!</b>
+        Frontend engineer building interfaces that
+        <br />
+        behave like <span className={styles.accent}>systems</span>, not screens.
+        <span className={styles.caret} aria-hidden="true" />
       </h1>
-      {/* second part */}
-      <div className={styles.post}>
-        {/* image */}
-        <div className={styles.imgContainer}>
-          <Image src='/p1.jpeg' alt='' fill className={styles.image} />
-        </div>
-        {/* title- text - button */}
-        <div className={styles.textContainer}>
-          <h1 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet alim consectetur adipisicing elit.
-          </h1>
-          <p className={styles.postDesc}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Cupiditate, quam nisi magni ea laborum inventore voluptatum
-            laudantium repellat ducimus unde aspernatur fuga. Quo, accusantium
-            quisquam! Harum unde sit culpa debitis.
-          </p>
-          <button className={styles.button}>Read More</button>
-        </div>
+      <p className={styles.desc}>
+        Opinionated notes on frontend architecture, performance, and the small
+        decisions that make a product feel trustworthy. Part journal, part field
+        guide.
+      </p>
+      <div className={styles.actions}>
+        <a href="/blog" className={styles.primary}>
+          $ read the blog
+        </a>
+        <a href="#categories" className={styles.secondary}>
+          browse topics ↓
+        </a>
       </div>
     </div>
   );

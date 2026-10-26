@@ -1,73 +1,61 @@
 .container {
+  scroll-margin-top: 20px;
 }
 
 .title {
-  margin: 50px 0px;
+  margin: 48px 0px 28px;
+  font-size: 22px;
+  color: var(--softTextColor);
+  font-weight: 600;
+}
+
+.title::before {
+  content: "~/ ";
+  color: var(--accent);
 }
 
 .categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 14px;
 }
 
 .category {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-transform: capitalize;
-  width: 15%;
-  height: 80px;
+  text-transform: lowercase;
+  padding: 12px 18px;
+  height: auto;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--softBg);
+  font-size: 14px;
+  transition: border-color 150ms ease, color 150ms ease;
 }
 
-.category.style {
-  background-color: #57c4ff31;
+.category::before {
+  content: "#";
+  color: var(--accent);
 }
 
-.category.react {
-  background-color: #da85c731;
-}
-
-.category.food {
-  background-color: #7fb88133;
-}
-
-.category.travel {
-  background-color: #ff795736;
-}
-
-.category.culture {
-  background-color: #ffb04f45;
-}
-
-.category.coding {
-  background-color: #5e4fff31;
+.category:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
 }
 
 .image {
   border-radius: 50%;
 }
 
-@media screen and (max-width: 1280px) {
-  .category {
-    width: 20%;
-  }
+.empty {
+  color: var(--softTextColor);
+  font-size: 14px;
 }
-@media screen and (max-width: 1024px) {
-  .category {
-    width: 25%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .category {
-    width: 45%;
-  }
-}
+
 @media screen and (max-width: 640px) {
   .category {
-    width: 100%;
+    flex: 1 1 100%;
   }
 }
